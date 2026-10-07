@@ -1,2011 +1,1827 @@
-# Linux Foundations Command Cheat Sheet
+# 🐧 Linux Foundations Command Cheat Sheet
 
-> This cheat sheet focuses only on commands, syntax, options, and practical examples.
+> A quick reference for essential Linux commands, covering syntax, common options, and practical examples.
+
+**Topic:** Linux &nbsp;|&nbsp; **Part of:** My Learning Notes
+
+---
 
 ## Table of Contents
 
-1.  Basic Shell and Information Commands
-2.  User and Group Management
-3.  Privilege and Administrative Commands
-4.  Text Editors
-5.  File and Directory Navigation
-6.  Viewing and Managing Files
-7.  File Searching and Comparison
-8.  Links and Compression
-9.  File Ownership and Permissions
-10. Bash Environment and Text Processing
-11. Process and Job Management
-12. Task Scheduling
-13. Service Management
-14. System Monitoring
+| # | Section | Commands |
+|:-:|:--|:--|
+| 1 | [Basic Shell and Information Commands](#1-basic-shell-and-information-commands) | [`date`](#date), [`cal`](#cal), [`clear`](#clear), [`echo`](#echo), [`history`](#history), [`touch`](#touch), [`cat`](#cat) |
+| 2 | [User and Group Management](#2-user-and-group-management) | [`useradd`](#useradd), [`usermod`](#usermod), [`userdel`](#userdel), [`passwd`](#passwd), [`groupadd`](#groupadd), [`groupmod`](#groupmod), [`groupdel`](#groupdel), [`gpasswd`](#gpasswd) |
+| 3 | [Privilege and Administrative Commands](#3-privilege-and-administrative-commands) | [`su`](#su), [`sudo`](#sudo), [`visudo`](#visudo) |
+| 4 | [Text Editors](#4-text-editors) | [`vim`](#vim), [`vimtutor`](#vimtutor), [`nano`](#nano), [`apt-get`](#apt-get), [`gedit`](#gedit) |
+| 5 | [File and Directory Navigation](#5-file-and-directory-navigation) | [`pwd`](#pwd), [`cd`](#cd), [`ls`](#ls) |
+| 6 | [Viewing and Managing Files](#6-viewing-and-managing-files) | [`more`](#more), [`less`](#less), [`head`](#head), [`tail`](#tail), [`cp`](#cp), [`rm`](#rm), [`mkdir`](#mkdir), [`mv`](#mv), [`rmdir`](#rmdir) |
+| 7 | [File Searching and Comparison](#7-file-searching-and-comparison) | [`hash`](#hash), [`cksum`](#cksum), [`find`](#find), [`grep`](#grep), [`diff`](#diff) |
+| 8 | [Links and Compression](#8-links-and-compression) | [`ln`](#ln), [`tar`](#tar), [`gzip`](#gzip), [`zip`](#zip), [`unzip`](#unzip) |
+| 9 | [File Ownership and Permissions](#9-file-ownership-and-permissions) | [`chown`](#chown), [`chmod`](#chmod) |
+| 10 | [Bash Environment and Text Processing](#10-bash-environment-and-text-processing) | [`env`](#env), [`alias`](#alias), [`unalias`](#unalias), [`cut`](#cut), [`sed`](#sed), [`sort`](#sort), [`awk`](#awk) |
+| 11 | [Process and Job Management](#11-process-and-job-management) | [`ps`](#ps), [`pstree`](#pstree), [`top`](#top), [`kill`](#kill), [`nice`](#nice), [`renice`](#renice), [`jobs`](#jobs), [`bg`](#bg), [`fg`](#fg) |
+| 12 | [Task Scheduling](#12-task-scheduling) | [`at`](#at), [`cron`](#cron), [`crontab`](#crontab) |
+| 13 | [Service Management](#13-service-management) | [`systemctl`](#systemctl), [`service`](#service) |
+| 14 | [System Monitoring](#14-system-monitoring) | [`lscpu`](#lscpu), [`lshw`](#lshw), [`du`](#du), [`df`](#df), [`fdisk`](#fdisk), [`vmstat`](#vmstat), [`free`](#free), [`uptime`](#uptime) |
 
-------------------------------------------------------------------------
-# 1. Basic Shell and Information Commands
+---
 
-## `date`
+## 1. Basic Shell and Information Commands
 
-**Definition:** Displays the current date and time in a specified
-format. It can also set the system date.
+### `date`
+
+**Definition:** Displays the current date and time in a specified format. It can also set the system date.
 
 **Syntax:**
 
-``` bash
+```bash
 date
 ```
 
 **Example:**
 
-``` bash
+```bash
 date
 ```
 
 Displays the current system date and time.
 
-------------------------------------------------------------------------
+### `cal`
 
-## `cal`
-
-**Definition:** Displays a calendar. Without arguments, it displays the
-current month.
+**Definition:** Displays a calendar. Without arguments, it displays the current month.
 
 **Syntax:**
 
-``` bash
+```bash
 cal [MONTH] [YEAR]
 ```
 
 **Examples:**
 
-``` bash
+```bash
 cal
 ```
 
 Displays the current month.
 
-``` bash
+```bash
 cal 8 2026
 ```
 
 Displays August 2026.
 
-------------------------------------------------------------------------
-
-## `clear`
+### `clear`
 
 **Definition:** Clears the terminal screen and displays a new prompt.
 
 **Syntax:**
 
-``` bash
+```bash
 clear
 ```
 
 **Example:**
 
-``` bash
+```bash
 clear
 ```
 
-------------------------------------------------------------------------
+### `echo`
 
-## `echo`
-
-**Definition:** Displays specified text or variable values on standard
-output.
+**Definition:** Displays specified text or variable values on standard output.
 
 **Syntax:**
 
-``` bash
+```bash
 echo [TEXT]
 echo $VARIABLE
 ```
 
 **Examples:**
 
-``` bash
+```bash
 echo "Hello Linux"
 ```
 
 Displays `Hello Linux`.
 
-``` bash
+```bash
 echo $HOME
 ```
 
-Displays the current user's home directory.
+Displays the current user’s home directory.
 
-------------------------------------------------------------------------
+### `history`
 
-## `history`
-
-**Definition:** Displays the current user's command history.
+**Definition:** Displays the current user’s command history.
 
 **Syntax:**
 
-``` bash
+```bash
 history
 ```
 
 **Examples:**
 
-``` bash
+```bash
 history
 ```
 
 Displays previously executed commands.
 
-``` bash
+```bash
 !143
 ```
 
 Runs the command associated with history event number `143`.
 
-------------------------------------------------------------------------
+### `touch`
 
-## `touch`
-
-**Definition:** Creates an empty file or updates the access and
-modification timestamps of an existing file.
+**Definition:** Creates an empty file or updates the access and modification timestamps of an existing file.
 
 **Syntax:**
 
-``` bash
+```bash
 touch FILE...
 ```
 
 **Examples:**
 
-``` bash
+```bash
 touch notes.txt
 ```
 
 Creates an empty `notes.txt` file if it does not exist.
 
-``` bash
+```bash
 touch file1.txt file2.txt file3.txt
 ```
 
 Creates multiple files.
 
-------------------------------------------------------------------------
+### `cat`
 
-## `cat`
-
-**Definition:** Reads file contents and displays them in the terminal.
-It can also be used with input redirection and pipes.
+**Definition:** Reads file contents and displays them in the terminal. It can also be used with input redirection and pipes.
 
 **Syntax:**
 
-``` bash
+```bash
 cat FILE
 ```
 
 **Examples:**
 
-``` bash
+```bash
 cat /etc/hosts
 ```
 
 Displays the contents of `/etc/hosts`.
 
-``` bash
+```bash
 cat myfirstscript
 ```
 
 Displays the contents of `myfirstscript`.
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 2. User and Group Management
+---
 
-## `useradd`
+## 2. User and Group Management
+
+### `useradd`
 
 **Definition:** Creates a new user account.
 
 **Syntax:**
 
-``` bash
+```bash
 useradd [OPTIONS] USERNAME
 ```
 
-**Options mentioned:**
+**Options:**
 
-  ----------------------------------------------------------------------------------
-  Option                  Description             Example
-  ----------------------- ----------------------- ----------------------------------
-  `-c`                    Adds a comment          `useradd -c "New Employee" jdoe`
-
-  `-e`                    Sets account expiration `useradd -e 2026-12-31 jdoe`
-
-  `-d`                    Specifies the home      `useradd -d /users/jdoe jdoe`
-                          directory path          
-  ----------------------------------------------------------------------------------
+| Option | Description                       | Example                          |
+|:-------|:----------------------------------|:---------------------------------|
+| `-c`   | Adds a comment                    | `useradd -c "New Employee" jdoe` |
+| `-e`   | Sets account expiration           | `useradd -e 2026-12-31 jdoe`     |
+| `-d`   | Specifies the home directory path | `useradd -d /users/jdoe jdoe`    |
 
 **Examples:**
 
-``` bash
+```bash
 sudo useradd user20
 ```
 
 Creates the user `user20` using delegated administrative privileges.
 
-``` bash
+```bash
 useradd -c "New Employee" jdoe
 ```
 
 Creates `jdoe` with a comment.
 
-------------------------------------------------------------------------
-
-## `usermod`
+### `usermod`
 
 **Definition:** Modifies an existing user account.
 
 **Syntax:**
 
-``` bash
+```bash
 usermod [OPTIONS] USERNAME
 ```
 
-**Options mentioned:**
+**Options:**
 
-  -----------------------------------------------------------------------------------
-  Option                  Description             Example
-  ----------------------- ----------------------- -----------------------------------
-  `-c`                    Changes the comment     `usermod -c "Mary Major" mmajor`
-
-  `-e`                    Changes account         `usermod -e 2026-12-31 mmajor`
-                          expiration              
-
-  `-aG`                   Appends the user to     `usermod -aG hr,marketing mmajor`
-                          supplementary groups    
-  -----------------------------------------------------------------------------------
+| Option | Description                              | Example                           |
+|:-------|:-----------------------------------------|:----------------------------------|
+| `-c`   | Changes the comment                      | `usermod -c "Mary Major" mmajor`  |
+| `-e`   | Changes account expiration               | `usermod -e 2026-12-31 mmajor`    |
+| `-aG`  | Appends the user to supplementary groups | `usermod -aG hr,marketing mmajor` |
 
 **Example:**
 
-``` bash
+```bash
 usermod -aG hr,marketing mmajor
 ```
 
-Adds `mmajor` to the `hr` and `marketing` groups without removing
-existing supplementary groups.
+Adds `mmajor` to the `hr` and `marketing` groups without removing existing supplementary groups.
 
-------------------------------------------------------------------------
-
-## `userdel`
+### `userdel`
 
 **Definition:** Deletes a user account.
 
 **Syntax:**
 
-``` bash
+```bash
 userdel [OPTIONS] USERNAME
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- ----------------------------------------
-  `-r`     Also deletes the user's home directory
+| Option | Description                            |
+|:-------|:---------------------------------------|
+| `-r`   | Also deletes the user’s home directory |
 
 **Example:**
 
-``` bash
+```bash
 sudo userdel -r jdoe
 ```
 
-Deletes `jdoe` and the user's home directory.
+Deletes `jdoe` and the user’s home directory.
 
-------------------------------------------------------------------------
-
-## `passwd`
+### `passwd`
 
 **Definition:** Sets or changes user passwords.
 
 **Syntax:**
 
-``` bash
+```bash
 passwd [USERNAME]
 ```
 
 **Examples:**
 
-``` bash
+```bash
 passwd
 ```
 
 Changes the password of the current user.
 
-``` bash
+```bash
 sudo passwd jdoe
 ```
 
 Changes the password for `jdoe`.
 
-------------------------------------------------------------------------
-
-## `groupadd`
+### `groupadd`
 
 **Definition:** Creates a new group.
 
 **Syntax:**
 
-``` bash
+```bash
 groupadd GROUP
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo groupadd developers
 ```
 
 Creates the `developers` group.
 
-------------------------------------------------------------------------
-
-## `groupmod`
+### `groupmod`
 
 **Definition:** Modifies an existing group.
 
 **Syntax:**
 
-``` bash
+```bash
 groupmod -n NEW_GROUP OLD_GROUP
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo groupmod -n engineers developers
 ```
 
 Renames `developers` to `engineers`.
 
-------------------------------------------------------------------------
-
-## `groupdel`
+### `groupdel`
 
 **Definition:** Deletes an existing group.
 
 **Syntax:**
 
-``` bash
+```bash
 groupdel GROUP
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo groupdel developers
 ```
 
 Deletes the `developers` group.
 
-------------------------------------------------------------------------
+### `gpasswd`
 
-## `gpasswd`
-
-**Definition:** Administers group membership through the `/etc/group`
-file.
+**Definition:** Administers group membership through the `/etc/group` file.
 
 **Syntax:**
 
-``` bash
+```bash
 gpasswd [OPTION] GROUP
 ```
 
-**Options mentioned:**
+**Options:**
 
-  ---------------------------------------------------------------------------------------
-  Option                  Description             Example
-  ----------------------- ----------------------- ---------------------------------------
-  `-a`, `--add`           Adds a user to a group  `gpasswd -a jdoe marketing`
-
-  `-d`, `--delete`        Removes a user from a   `gpasswd -d jdoe marketing`
-                          group                   
-
-  `-M`                    Sets the list of group  `gpasswd -M user1,user2 developers`
-                          members                 
-
-  `-A`                    Sets the list of group  `gpasswd -A admin1,admin2 developers`
-                          administrators          
-  ---------------------------------------------------------------------------------------
+| Option           | Description                           | Example                               |
+|:-----------------|:--------------------------------------|:--------------------------------------|
+| `-a`, `--add`    | Adds a user to a group                | `gpasswd -a jdoe marketing`           |
+| `-d`, `--delete` | Removes a user from a group           | `gpasswd -d jdoe marketing`           |
+| `-M`             | Sets the list of group members        | `gpasswd -M user1,user2 developers`   |
+| `-A`             | Sets the list of group administrators | `gpasswd -A admin1,admin2 developers` |
 
 **Examples:**
 
-``` bash
+```bash
 sudo gpasswd -a jdoe ec2-user
 ```
 
-``` bash
+```bash
 sudo gpasswd -M smartinez,rroe ec2-user
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 3. Privilege and Administrative Commands
+---
 
-## `su`
+## 3. Privilege and Administrative Commands
+
+### `su`
 
 **Definition:** Switches to another user account.
 
 **Syntax:**
 
-``` bash
+```bash
 su USERNAME
 su - USERNAME
 ```
 
 **Examples:**
 
-``` bash
+```bash
 su root
 ```
 
-Switches to root while keeping the current user's environment.
+Switches to root while keeping the current user’s environment.
 
-``` bash
+```bash
 su - root
 ```
 
-Switches to root and loads the root user's environment.
+Switches to root and loads the root user’s environment.
 
-``` bash
+```bash
 su student02
 ```
 
 Switches to `student02`.
 
-------------------------------------------------------------------------
+### `sudo`
 
-## `sudo`
-
-**Definition:** Runs a command with delegated administrative
-permissions.
+**Definition:** Runs a command with delegated administrative permissions.
 
 **Syntax:**
 
-``` bash
+```bash
 sudo COMMAND
 ```
 
-**Option mentioned:**
+**Options:**
 
-  Option   Description
-  -------- -------------------------------------
-  `-lU`    Displays delegated sudo permissions
+| Option | Description                         |
+|:-------|:------------------------------------|
+| `-lU`  | Displays delegated sudo permissions |
 
 **Examples:**
 
-``` bash
+```bash
 sudo useradd user20
 ```
 
 Runs `useradd` with delegated administrative privileges.
 
-``` bash
+```bash
 sudo systemctl restart httpd
 ```
 
 Restarts the `httpd` service with elevated permissions.
 
-------------------------------------------------------------------------
-
-## `visudo`
+### `visudo`
 
 **Definition:** Safely edits the `/etc/sudoers` configuration file.
 
 **Syntax:**
 
-``` bash
+```bash
 visudo
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo visudo
 ```
 
 Opens the sudoers configuration for editing.
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 4. Text Editors
+---
 
-## `vim`
+## 4. Text Editors
+
+### `vim`
 
 **Definition:** A command-line text editor.
 
 **Syntax:**
 
-``` bash
+```bash
 vim FILE
 ```
 
 **Example:**
 
-``` bash
+```bash
 vim config.txt
 ```
 
-### Vim commands and keystrokes
+#### Vim commands and keystrokes
 
-  Command / Key     Effect
-  ----------------- ----------------------------------------------
-  `i`               Enter insert mode
-  `ESC`             Return to command mode
-  `x`               Delete character at cursor
-  `G`               Move to bottom of file
-  `gg`              Move to top of file
-  `42G`             Move to line 42
-  `/keyword`        Search for a keyword
-  `y`               Yank text
-  `p`               Put/paste text
-  `O`               Insert a line below the cursor
-  `A`               Insert text after the cursor
-  `h j k l`         Move left, down, up, right
-  `ZZ`              Save and exit
-  `:w`              Save
-  `:q`              Quit
-  `:wq`             Save and quit
-  `:wq!`            Save and force quit
-  `:q!`             Quit without saving
-  `:help`           Open general help
-  `:help keyword`   Open help for a keyword
-  `K`               Open the man page for the word at the cursor
+| Command / Key   | Effect                                       |
+|:----------------|:---------------------------------------------|
+| `i`             | Enter insert mode                            |
+| `ESC`           | Return to command mode                       |
+| `x`             | Delete character at cursor                   |
+| `G`             | Move to bottom of file                       |
+| `gg`            | Move to top of file                          |
+| `42G`           | Move to line 42                              |
+| `/keyword`      | Search for a keyword                         |
+| `y`             | Yank text                                    |
+| `p`             | Put/paste text                               |
+| `o` / `O` | Open a new line below / above the cursor |
+| `a` / `A` | Insert text after the cursor / at the end of the line |
+| `h j k l`       | Move left, down, up, right                   |
+| `ZZ`            | Save and exit                                |
+| `:w`            | Save                                         |
+| `:q`            | Quit                                         |
+| `:wq`           | Save and quit                                |
+| `:wq!`          | Save and force quit                          |
+| `:q!`           | Quit without saving                          |
+| `:help`         | Open general help                            |
+| `:help keyword` | Open help for a keyword                      |
+| `K`             | Open the man page for the word at the cursor |
 
-------------------------------------------------------------------------
-
-## `vimtutor`
+### `vimtutor`
 
 **Definition:** Opens an interactive tutorial for common Vim tasks.
 
 **Syntax:**
 
-``` bash
+```bash
 vimtutor
 ```
 
-------------------------------------------------------------------------
-
-## `nano`
+### `nano`
 
 **Definition:** A lightweight command-line text editor.
 
 **Syntax:**
 
-``` bash
+```bash
 nano FILE
 ```
 
 **Example:**
 
-``` bash
+```bash
 nano notes.txt
 ```
 
-### Nano shortcuts mentioned
+#### Nano shortcuts
 
-  Shortcut   Effect
-  ---------- -----------------------------
-  `Ctrl+X`   Quit
-  `Ctrl+O`   Save
-  `Ctrl+K`   Cut text
-  `Ctrl+U`   Paste text
-  `Ctrl+G`   Help
-  `Ctrl+W`   Search
-  `Ctrl+Y`   Previous screen
-  `Ctrl+V`   Next screen
-  `Ctrl+C`   Display cursor position
-  `Ctrl+_`   Go to line and column
-  `Ctrl+\`   Replace
-  `Alt+W`    Repeat last search
-  `Alt+6`    Copy current line
-  `Ctrl+E`   Move to end of current line
-  `Alt+]`    Move to matching bracket
-  `Alt+,`    Previous file buffer
-  `Alt+.`    Next file buffer
+| Shortcut | Effect                      |
+|:---------|:----------------------------|
+| `Ctrl+X` | Quit                        |
+| `Ctrl+O` | Save                        |
+| `Ctrl+K` | Cut text                    |
+| `Ctrl+U` | Paste text                  |
+| `Ctrl+G` | Help                        |
+| `Ctrl+W` | Search                      |
+| `Ctrl+Y` | Previous screen             |
+| `Ctrl+V` | Next screen                 |
+| `Ctrl+C` | Display cursor position     |
+| `Ctrl+_` | Go to line and column       |
+| `Ctrl+\` | Replace                     |
+| `Alt+W`  | Repeat last search          |
+| `Alt+6`  | Copy current line           |
+| `Ctrl+E` | Move to end of current line |
+| `Alt+]`  | Move to matching bracket    |
+| `Alt+,`  | Previous file buffer        |
+| `Alt+.`  | Next file buffer            |
 
-------------------------------------------------------------------------
-
-## `apt-get`
+### `apt-get`
 
 **Definition:** Installs packages on Debian or Ubuntu systems.
 
 **Syntax:**
 
-``` bash
+```bash
 sudo apt-get install PACKAGE
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo apt-get install nano
 ```
 
 Installs Nano.
 
-------------------------------------------------------------------------
+### `gedit`
 
-## `gedit`
-
-**Definition:** A GUI-based text editor available when a graphical
-environment is installed.
+**Definition:** A GUI-based text editor available when a graphical environment is installed.
 
 **Syntax:**
 
-``` bash
+```bash
 gedit FILE
 ```
 
 **Example:**
 
-``` bash
+```bash
 gedit notes.txt
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 5. File and Directory Navigation
+---
 
-## `pwd`
+## 5. File and Directory Navigation
 
-**Definition:** Displays the absolute path of the current working
-directory.
+### `pwd`
+
+**Definition:** Displays the absolute path of the current working directory.
 
 **Syntax:**
 
-``` bash
+```bash
 pwd
 ```
 
-------------------------------------------------------------------------
-
-## `cd`
+### `cd`
 
 **Definition:** Changes the current directory.
 
 **Syntax:**
 
-``` bash
+```bash
 cd PATH
 ```
 
 **Examples:**
 
-``` bash
+```bash
 cd /home/userA/Documents/projects
 ```
 
 Uses an absolute path.
 
-``` bash
+```bash
 cd Documents/projects
 ```
 
 Uses a relative path.
 
-``` bash
+```bash
 cd ../
 ```
 
 Moves up one directory.
 
-------------------------------------------------------------------------
-
-## `ls`
+### `ls`
 
 **Definition:** Lists the contents of a directory.
 
 **Syntax:**
 
-``` bash
+```bash
 ls [OPTIONS] [DIRECTORY...]
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option                     Description                                Example
-  -------------------------- ------------------------------------------ ----------
-  `-l`                       Long format with details and permissions   `ls -l`
-  `-h`                       Human-readable file sizes                  `ls -lh`
-  `-a`                       Shows hidden files                         `ls -a`
-  `-R`                       Lists subdirectories recursively           `ls -R`
-  `-X`, `--sort=extension`   Sorts by file extension                    `ls -X`
-  `-S`, `--sort=size`        Sorts by file size                         `ls -S`
-  `-t`, `--sort=time`        Sorts by modification time                 `ls -t`
-  `-v`, `--sort=version`     Sorts by version number                    `ls -v`
-  `-r`                       Reverses the sorting order                 `ls -lr`
+| Option                   | Description                              | Example  |
+|:-------------------------|:-----------------------------------------|:---------|
+| `-l`                     | Long format with details and permissions | `ls -l`  |
+| `-h`                     | Human-readable file sizes                | `ls -lh` |
+| `-a`                     | Shows hidden files                       | `ls -a`  |
+| `-R`                     | Lists subdirectories recursively         | `ls -R`  |
+| `-X`, `--sort=extension` | Sorts by file extension                  | `ls -X`  |
+| `-S`, `--sort=size`      | Sorts by file size                       | `ls -S`  |
+| `-t`, `--sort=time`      | Sorts by modification time               | `ls -t`  |
+| `-v`, `--sort=version`   | Sorts by version number                  | `ls -v`  |
+| `-r`                     | Reverses the sorting order               | `ls -lr` |
 
 **Examples:**
 
-``` bash
+```bash
 ls -al
 ```
 
 Displays all files, including hidden files, in long format.
 
-``` bash
+```bash
 ls -lh
 ```
 
 Displays detailed information with human-readable file sizes.
 
-``` bash
+```bash
 ls -S
 ```
 
 Sorts files by size.
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 6. Viewing and Managing Files
+---
 
-## `more`
+## 6. Viewing and Managing Files
 
-**Definition:** Displays file contents one screen at a time and scrolls
-downward.
+### `more`
+
+**Definition:** Displays file contents one screen at a time and scrolls downward.
 
 **Syntax:**
 
-``` bash
+```bash
 more [OPTIONS] [+LINE_NUMBER] [+/PATTERN] FILE
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- -------------------------------------
-  `-d`     Displays navigation information
-  `-f`     Prevents line wrapping
-  `-p`     Clears the screen before displaying
-  `-s`     Compresses multiple blank lines
+| Option | Description                         |
+|:-------|:------------------------------------|
+| `-d`   | Displays navigation information     |
+| `-f`   | Prevents line wrapping              |
+| `-p`   | Clears the screen before displaying |
+| `-s`   | Compresses multiple blank lines     |
 
 **Example:**
 
-``` bash
+```bash
 cat file.txt | more
 ```
 
-------------------------------------------------------------------------
-
-## `less`
+### `less`
 
 **Definition:** Displays file contents and allows scrolling up and down.
 
 **Syntax:**
 
-``` bash
+```bash
 less [OPTIONS] FILE
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- ---------------------------------------
-  `-N`     Shows line numbers
-  `-X`     Keeps content displayed after exiting
-  `+F`     Watches for file changes
+| Option | Description                           |
+|:-------|:--------------------------------------|
+| `-N`   | Shows line numbers                    |
+| `-X`   | Keeps content displayed after exiting |
+| `+F`   | Watches for file changes              |
 
 **Example:**
 
-``` bash
+```bash
 less -N /var/log/messages
 ```
 
 Press `Q` to quit.
 
-------------------------------------------------------------------------
-
-## `head`
+### `head`
 
 **Definition:** Displays the first 10 lines of a file by default.
 
 **Syntax:**
 
-``` bash
+```bash
 head [OPTIONS] FILE...
 ```
 
-  Option        Description
-  ------------- ----------------------------------------------
-  `-n NUMBER`   Displays the first specified number of lines
-  `-c NUMBER`   Displays the first specified number of bytes
+| Option      | Description                                  |
+|:------------|:---------------------------------------------|
+| `-n NUMBER` | Displays the first specified number of lines |
+| `-c NUMBER` | Displays the first specified number of bytes |
 
 **Example:**
 
-``` bash
+```bash
 head -n 20 logfile.txt
 ```
 
-------------------------------------------------------------------------
-
-## `tail`
+### `tail`
 
 **Definition:** Displays the last 10 lines of a file by default.
 
 **Syntax:**
 
-``` bash
+```bash
 tail [OPTIONS] FILE...
 ```
 
-  Option        Description
-  ------------- ---------------------------------------------
-  `-n NUMBER`   Displays the last specified number of lines
-  `-c NUMBER`   Displays the last specified number of bytes
-  `-f`          Monitors the file for changes
+| Option      | Description                                 |
+|:------------|:--------------------------------------------|
+| `-n NUMBER` | Displays the last specified number of lines |
+| `-c NUMBER` | Displays the last specified number of bytes |
+| `-f`        | Monitors the file for changes               |
 
 **Example:**
 
-``` bash
+```bash
 tail -f /var/log/secure
 ```
 
 Continuously monitors new entries.
 
-------------------------------------------------------------------------
-
-## `cp`
+### `cp`
 
 **Definition:** Copies files and directories.
 
 **Syntax:**
 
-``` bash
+```bash
 cp [OPTIONS] SOURCE... DESTINATION
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- ---------------------------------
-  `-a`     Archive files
-  `-f`     Force overwrite
-  `-i`     Ask before overwriting
-  `-l`     Create links instead of copies
-  `-L`     Follow symbolic links
-  `-n`     Do not overwrite existing files
-  `-R`     Copy recursively
-  `-u`     Copy only when source is newer
-  `-v`     Verbose output
+| Option | Description                     |
+|:-------|:--------------------------------|
+| `-a`   | Archive files                   |
+| `-f`   | Force overwrite                 |
+| `-i`   | Ask before overwriting          |
+| `-l`   | Create links instead of copies  |
+| `-L`   | Follow symbolic links           |
+| `-n`   | Do not overwrite existing files |
+| `-R`   | Copy recursively                |
+| `-u`   | Copy only when source is newer  |
+| `-v`   | Verbose output                  |
 
 **Examples:**
 
-``` bash
+```bash
 cp report.txt backup/
 ```
 
-``` bash
+```bash
 cp -R project/ backup/
 ```
 
-------------------------------------------------------------------------
-
-## `rm`
+### `rm`
 
 **Definition:** Deletes files and directories.
 
 **Syntax:**
 
-``` bash
+```bash
 rm [OPTIONS] FILE...
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- ---------------------------------
-  `-d`     Removes an empty directory
-  `-r`     Removes directories recursively
-  `-f`     Never prompts
-  `-i`     Prompts for confirmation
-  `-v`     Displays deleted file names
+| Option | Description                     |
+|:-------|:--------------------------------|
+| `-d`   | Removes an empty directory      |
+| `-r`   | Removes directories recursively |
+| `-f`   | Never prompts                   |
+| `-i`   | Prompts for confirmation        |
+| `-v`   | Displays deleted file names     |
 
 **Examples:**
 
-``` bash
+```bash
 rm notes.txt
 ```
 
-``` bash
+```bash
 rm -r old_project/
 ```
 
-``` bash
+```bash
 rm *.png
 ```
 
 Removes files ending in `.png`.
 
-------------------------------------------------------------------------
-
-## `mkdir`
+### `mkdir`
 
 **Definition:** Creates directories.
 
 **Syntax:**
 
-``` bash
+```bash
 mkdir [OPTIONS] DIRECTORY...
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option      Description
-  ----------- --------------------------------------
-  `-m MASK`   Sets directory permissions
-  `-p`        Creates parent directories as needed
+| Option    | Description                          |
+|:----------|:-------------------------------------|
+| `-m MASK` | Sets directory permissions           |
+| `-p`      | Creates parent directories as needed |
 
 **Examples:**
 
-``` bash
+```bash
 mkdir dir1 dir2 dir3
 ```
 
-``` bash
+```bash
 mkdir -m 700 private
 ```
 
-``` bash
+```bash
 mkdir -p /home/user/dir1/dir2
 ```
 
-------------------------------------------------------------------------
-
-## `mv`
+### `mv`
 
 **Definition:** Moves or renames files and directories.
 
 **Syntax:**
 
-``` bash
+```bash
 mv [OPTIONS] SOURCE DESTINATION
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- -----------------------------------
-  `-i`     Prompts before overwrite
-  `-f`     Avoids prompting
-  `-n`     Does not overwrite existing files
-  `-v`     Verbose output
+| Option | Description                       |
+|:-------|:----------------------------------|
+| `-i`   | Prompts before overwrite          |
+| `-f`   | Avoids prompting                  |
+| `-n`   | Does not overwrite existing files |
+| `-v`   | Verbose output                    |
 
 **Examples:**
 
-``` bash
+```bash
 mv file1 dir1/
 ```
 
-``` bash
+```bash
 mv file1 file2
 ```
 
 Renames `file1` to `file2`.
 
-``` bash
+```bash
 mv *.png images/
 ```
 
-------------------------------------------------------------------------
-
-## `rmdir`
+### `rmdir`
 
 **Definition:** Deletes empty directories.
 
 **Syntax:**
 
-``` bash
+```bash
 rmdir DIRECTORY
 ```
 
 **Example:**
 
-``` bash
+```bash
 rmdir empty_folder
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 7. File Searching and Comparison
+---
 
-## `hash`
+## 7. File Searching and Comparison
 
-**Definition:** Displays or modifies remembered command locations
-maintained in the shell hash table.
+### `hash`
+
+**Definition:** Displays or modifies remembered command locations maintained in the shell hash table.
 
 **Syntax:**
 
-``` bash
+```bash
 hash [-lr] [-p PATH] [-dt] [COMMAND...]
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option      Description
-  ----------- ------------------------------------------
-  `-d`        Deletes a command location
-  `-l`        Displays reusable output
-  `-p PATH`   Sets a command's full path
-  `-r`        Clears the hash table
-  `-t`        Displays a command's remembered location
+| Option    | Description                              |
+|:----------|:-----------------------------------------|
+| `-d`      | Deletes a command location               |
+| `-l`      | Displays reusable output                 |
+| `-p PATH` | Sets a command’s full path               |
+| `-r`      | Clears the hash table                    |
+| `-t`      | Displays a command’s remembered location |
 
 **Examples:**
 
-``` bash
+```bash
 hash
 ```
 
-``` bash
+```bash
 hash -r
 ```
 
-------------------------------------------------------------------------
+### `cksum`
 
-## `cksum`
-
-**Definition:** Generates a CRC checksum and byte count for a file or
-stream.
+**Definition:** Generates a CRC checksum and byte count for a file or stream.
 
 **Syntax:**
 
-``` bash
+```bash
 cksum FILE
 ```
 
 **Example:**
 
-``` bash
+```bash
 cksum backup.tar
 ```
 
-------------------------------------------------------------------------
+### `find`
 
-## `find`
-
-**Definition:** Searches directories for files that match specified
-criteria.
+**Definition:** Searches directories for files that match specified criteria.
 
 **Syntax:**
 
-``` bash
+```bash
 find START_DIRECTORY [OPTIONS] CRITERIA
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option            Description
-  ----------------- -------------------------------------
-  `-name NAME`      Searches by file name
-  `-iname NAME`     Searches by file name ignoring case
-  `-user USER`      Searches by owner
-  `-type TYPE`      Searches by file type
-  `-fprint FILE`    Writes results to a file
-  `-exec COMMAND`   Runs a command on matches
-  `-delete`         Deletes matching files
+| Option          | Description                         |
+|:----------------|:------------------------------------|
+| `-name NAME`    | Searches by file name               |
+| `-iname NAME`   | Searches by file name ignoring case |
+| `-user USER`    | Searches by owner                   |
+| `-type TYPE`    | Searches by file type               |
+| `-fprint FILE`  | Writes results to a file            |
+| `-exec COMMAND` | Runs a command on matches           |
+| `-delete`       | Deletes matching files              |
 
 **Examples:**
 
-``` bash
+```bash
 find /home/student01 -name fileA.txt
 ```
 
-``` bash
+```bash
 find . -iname fileA.txt
 ```
 
-``` bash
+```bash
 find /home/student01 -user student01
 ```
 
-``` bash
+```bash
 find /home/student01 -name "*.jpg"
 ```
 
-------------------------------------------------------------------------
+### `grep`
 
-## `grep`
-
-**Definition:** Searches file contents for a text pattern and displays
-matching results.
+**Definition:** Searches file contents for a text pattern and displays matching results.
 
 **Syntax:**
 
-``` bash
+```bash
 grep [OPTIONS] PATTERN FILE_OR_DIRECTORY
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option                   Description
-  ------------------------ ----------------------------------
-  `-i`                     Ignore case
-  `-r`                     Search recursively
-  `-l`                     Display only matching file names
-  `-n`                     Display line numbers
-  `-c`                     Count matching lines
-  `--files-with-matches`   Outputs names of matching files
+| Option                 | Description                      |
+|:-----------------------|:---------------------------------|
+| `-i`                   | Ignore case                      |
+| `-r`                   | Search recursively               |
+| `-l`                   | Display only matching file names |
+| `-n`                   | Display line numbers             |
+| `-c`                   | Count matching lines             |
+| `--files-with-matches` | Outputs names of matching files  |
 
 **Examples:**
 
-``` bash
+```bash
 grep fail /var/log/secure
 ```
 
-``` bash
+```bash
 grep -r "error" /var/log
 ```
 
-``` bash
+```bash
 ps -ef | grep sshd
 ```
 
-------------------------------------------------------------------------
+### `diff`
 
-## `diff`
-
-**Definition:** Compares two files line by line and displays their
-differences.
+**Definition:** Compares two files line by line and displays their differences.
 
 **Syntax:**
 
-``` bash
+```bash
 diff [OPTIONS] FILE1 FILE2
 ```
 
 **Example:**
 
-``` bash
+```bash
 diff config_old.txt config_new.txt
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 8. Links and Compression
+---
 
-## `ln`
+## 8. Links and Compression
+
+### `ln`
 
 **Definition:** Creates links to files.
 
 **Syntax:**
 
-``` bash
+```bash
 ln [OPTIONS] ORIGINAL LINK_NAME
 ```
 
 **Examples:**
 
-``` bash
+```bash
 ln file1 fileA
 ```
 
 Creates a hard link.
 
-``` bash
+```bash
 ln -s fileA sym-fileA
 ```
 
 Creates a symbolic link.
 
-------------------------------------------------------------------------
+### `tar`
 
-## `tar`
-
-**Definition:** Bundles multiple files into a single archive and can
-extract archive contents.
+**Definition:** Bundles multiple files into a single archive and can extract archive contents.
 
 **Syntax:**
 
-``` bash
+```bash
 tar [OPTIONS] ARCHIVE FILE...
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- ---------------------------------
-  `-x`     Extracts archive contents
-  `-z`     Uses gzip compression
-  `-f`     Specifies the archive file name
-  `-v`     Displays processed file names
+| Option | Description                     |
+|:-------|:--------------------------------|
+| `-x`   | Extracts archive contents       |
+| `-z`   | Uses gzip compression           |
+| `-f`   | Specifies the archive file name |
+| `-v`   | Displays processed file names   |
 
 **Examples:**
 
-``` bash
+```bash
 tar -cvf tarball.tar file1 file2 file3
 ```
 
-``` bash
+```bash
 tar -xf tarball.tar
 ```
 
-------------------------------------------------------------------------
-
-## `gzip`
+### `gzip`
 
 **Definition:** Compresses or decompresses files.
 
 **Syntax:**
 
-``` bash
+```bash
 gzip FILE
 gzip -d FILE.gz
 ```
 
 **Example:**
 
-``` bash
+```bash
 gzip salesdata.tar
 ```
 
-``` bash
+```bash
 gzip -d salesdata.tar.gz
 ```
 
-------------------------------------------------------------------------
-
-## `zip`
+### `zip`
 
 **Definition:** Compresses files or directories into a `.zip` archive.
 
 **Syntax:**
 
-``` bash
+```bash
 zip -r ARCHIVE.zip FOLDER
 ```
 
 **Example:**
 
-``` bash
+```bash
 zip -r project.zip project/
 ```
 
-------------------------------------------------------------------------
-
-## `unzip`
+### `unzip`
 
 **Definition:** Extracts `.zip` archives.
 
 **Syntax:**
 
-``` bash
+```bash
 unzip ARCHIVE.zip
 ```
 
 **Example:**
 
-``` bash
+```bash
 unzip project.zip
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 9. File Ownership and Permissions
+---
 
-## `chown`
+## 9. File Ownership and Permissions
 
-**Definition:** Changes the owner and optionally the group associated
-with a file or directory.
+### `chown`
+
+**Definition:** Changes the owner and optionally the group associated with a file or directory.
 
 **Syntax:**
 
-``` bash
+```bash
 chown [OPTIONS] USER[:GROUP] FILE...
 ```
 
 **Examples:**
 
-``` bash
+```bash
 sudo chown jdoe report.txt
 ```
 
-``` bash
+```bash
 sudo chown jdoe:developers project/
 ```
 
-------------------------------------------------------------------------
-
-## `chmod`
+### `chmod`
 
 **Definition:** Changes file or directory permissions.
 
 **Syntax:**
 
-``` bash
+```bash
 chmod MODE FILE
 ```
 
-### Symbolic mode components
+#### Symbolic mode components
 
-  Component   Meaning
-  ----------- -------------------
-  `u`         User/owner
-  `g`         Group
-  `o`         Other
-  `r`         Read
-  `w`         Write
-  `x`         Execute
-  `+`         Add permission
-  `-`         Remove permission
-  `=`         Set permission
+| Component | Meaning           |
+|:----------|:------------------|
+| `u`       | User/owner        |
+| `g`       | Group             |
+| `o`       | Other             |
+| `r`       | Read              |
+| `w`       | Write             |
+| `x`       | Execute           |
+| `+`       | Add permission    |
+| `-`       | Remove permission |
+| `=`       | Set permission    |
 
 **Examples:**
 
-``` bash
+```bash
 chmod u+x script.sh
 ```
 
-``` bash
+```bash
 chmod g-w report.txt
 ```
 
-### Absolute mode values
+#### Absolute mode values
 
-  Permission        Value
-  ----------------- -------
-  Read              `4`
-  Write             `2`
-  Execute           `1`
-  All permissions   `7`
+| Permission      | Value |
+|:----------------|:------|
+| Read            | `4`   |
+| Write           | `2`   |
+| Execute         | `1`   |
+| All permissions | `7`   |
 
 **Examples:**
 
-``` bash
+```bash
 chmod 400 file_1
 ```
 
-``` bash
+```bash
 chmod 700 private_directory
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 10. Bash Environment and Text Processing
+---
 
-## `env`
+## 10. Bash Environment and Text Processing
 
-**Definition:** Displays environment variables or runs a utility in an
-altered environment.
+### `env`
+
+**Definition:** Displays environment variables or runs a utility in an altered environment.
 
 **Syntax:**
 
-``` bash
+```bash
 env
 ```
 
 **Example:**
 
-``` bash
+```bash
 env
 ```
 
 Displays variables in the current environment.
 
-------------------------------------------------------------------------
+### `alias`
 
-## `alias`
-
-**Definition:** Creates a shorter command that represents a longer
-command.
+**Definition:** Creates a shorter command that represents a longer command.
 
 **Syntax:**
 
-``` bash
+```bash
 alias NAME='COMMAND'
 ```
 
 **Example:**
 
-``` bash
+```bash
 alias ll='ls -l'
 ```
 
-------------------------------------------------------------------------
-
-## `unalias`
+### `unalias`
 
 **Definition:** Removes a configured alias.
 
 **Syntax:**
 
-``` bash
+```bash
 unalias NAME
 ```
 
 **Example:**
 
-``` bash
+```bash
 unalias ll
 ```
 
-------------------------------------------------------------------------
+### `cut`
 
-## `cut`
-
-**Definition:** Extracts sections of lines based on bytes, characters,
-fields, or delimiters.
+**Definition:** Extracts sections of lines based on bytes, characters, fields, or delimiters.
 
 **Syntax:**
 
-``` bash
+```bash
 cut [OPTIONS] FILE
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- -----------------------------
-  `-b`     Extract by byte
-  `-c`     Extract by character/column
-  `-f`     Extract by field
-  `-d`     Specifies the delimiter
+| Option | Description                 |
+|:-------|:----------------------------|
+| `-b`   | Extract by byte             |
+| `-c`   | Extract by character/column |
+| `-f`   | Extract by field            |
+| `-d`   | Specifies the delimiter     |
 
 **Examples:**
 
-``` bash
+```bash
 cut -c 1-5 file.txt
 ```
 
-``` bash
+```bash
 cut -d ":" -f 1 /etc/passwd
 ```
 
-------------------------------------------------------------------------
+### `sed`
 
-## `sed`
-
-**Definition:** A non-interactive text editor used to search, replace,
-insert, or delete text according to rules.
+**Definition:** A non-interactive text editor used to search, replace, insert, or delete text according to rules.
 
 **Syntax:**
 
-``` bash
+```bash
 sed 'RULE' FILE
 ```
 
 **Example:**
 
-``` bash
+```bash
 sed 's/old/new/g' file.txt
 ```
 
 Replaces occurrences of `old` with `new`.
 
-------------------------------------------------------------------------
-
-## `sort`
+### `sort`
 
 **Definition:** Sorts file contents in a specified order.
 
 **Syntax:**
 
-``` bash
+```bash
 sort [OPTIONS] FILE
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- ----------------------------
-  `-r`     Reverse alphabetical order
-  `-u`     Removes duplicate entries
-  `-M`     Sorts by month
+| Option | Description                |
+|:-------|:---------------------------|
+| `-r`   | Reverse alphabetical order |
+| `-u`   | Removes duplicate entries  |
+| `-M`   | Sorts by month             |
 
 **Examples:**
 
-``` bash
+```bash
 sort file.txt
 ```
 
-``` bash
+```bash
 sort -r file.txt
 ```
 
-``` bash
+```bash
 sort -u logfile.txt
 ```
 
-``` bash
+```bash
 sort -M months.txt
 ```
 
-------------------------------------------------------------------------
+### `awk`
 
-## `awk`
-
-**Definition:** Processes and transforms text using small programs,
-variables, operators, control flow, and formatted output.
+**Definition:** Processes and transforms text using small programs, variables, operators, control flow, and formatted output.
 
 **Syntax:**
 
-``` bash
+```bash
 awk [OPTIONS] 'PROGRAM' INPUT_FILE
 awk -f PROGRAM_FILE INPUT_FILE
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option             Description
-  ------------------ --------------------------------
-  `-F FS`            Specifies a field separator
-  `-f SOURCE_FILE`   Uses an AWK script from a file
-  `-v VAR=VALUE`     Declares a variable
+| Option           | Description                    |
+|:-----------------|:-------------------------------|
+| `-F FS`          | Specifies a field separator    |
+| `-f SOURCE_FILE` | Uses an AWK script from a file |
+| `-v VAR=VALUE`   | Declares a variable            |
 
 **Examples:**
 
-``` bash
+```bash
 awk '{print $1}' file.txt
 ```
 
-``` bash
+```bash
 awk -F ":" '{print $1}' /etc/passwd
 ```
 
-``` bash
+```bash
 awk -f script.awk input.txt
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 11. Process and Job Management
+---
 
-## `ps`
+## 11. Process and Job Management
+
+### `ps`
 
 **Definition:** Displays running processes.
 
 **Syntax:**
 
-``` bash
+```bash
 ps [OPTIONS]
 ```
 
 **Example:**
 
-``` bash
+```bash
 ps -ef
 ```
 
-``` bash
+```bash
 ps -ef | grep sshd
 ```
 
-------------------------------------------------------------------------
-
-## `pstree`
+### `pstree`
 
 **Definition:** Displays running processes in a tree structure.
 
 **Syntax:**
 
-``` bash
+```bash
 pstree
 ```
 
-------------------------------------------------------------------------
+### `top`
 
-## `top`
-
-**Definition:** Provides a real-time view of running processes and
-system resource usage.
+**Definition:** Provides a real-time view of running processes and system resource usage.
 
 **Syntax:**
 
-``` bash
+```bash
 top
 ```
 
-------------------------------------------------------------------------
+### `kill`
 
-## `kill`
-
-**Definition:** Sends a signal to a process, commonly to terminate or
-control it.
+**Definition:** Sends a signal to a process, commonly to terminate or control it.
 
 **Syntax:**
 
-``` bash
+```bash
 kill [SIGNAL] PID
 ```
 
-**Signals mentioned:**
+**Signals:**
 
-  Signal              Meaning
-  ------------------- -------------------------------
-  `-9` / `SIGKILL`    Immediately stops the process
-  `-15` / `SIGTERM`   Requests termination
-  `-19` / `SIGSTOP`   Pauses the process
+| Signal            | Meaning                       |
+|:------------------|:------------------------------|
+| `-9` / `SIGKILL`  | Immediately stops the process |
+| `-15` / `SIGTERM` | Requests termination          |
+| `-19` / `SIGSTOP` | Pauses the process            |
 
 **Example:**
 
-``` bash
+```bash
 kill -9 1234
 ```
 
-------------------------------------------------------------------------
-
-## `nice`
+### `nice`
 
 **Definition:** Starts a new process with a specified priority.
 
 **Syntax:**
 
-``` bash
+```bash
 nice COMMAND
 ```
 
-Priority range mentioned: `-20` is highest priority and `19` is lowest
-priority.
+**Priority range:** `-20` is highest priority and `19` is lowest priority.
 
 **Example:**
 
-``` bash
+```bash
 nice backup_script.sh
 ```
 
-------------------------------------------------------------------------
-
-## `renice`
+### `renice`
 
 **Definition:** Changes the priority of an already running process.
 
 **Syntax:**
 
-``` bash
+```bash
 renice PRIORITY PID
 ```
 
 **Example:**
 
-``` bash
+```bash
 renice 10 1234
 ```
 
-------------------------------------------------------------------------
-
-## `jobs`
+### `jobs`
 
 **Definition:** Lists jobs started and managed by the current shell.
 
 **Syntax:**
 
-``` bash
+```bash
 jobs
 ```
 
-------------------------------------------------------------------------
-
-## `bg`
+### `bg`
 
 **Definition:** Runs a job in the background.
 
 **Syntax:**
 
-``` bash
+```bash
 bg JOB_NUMBER
 ```
 
 **Example:**
 
-``` bash
+```bash
 bg %1
 ```
 
-------------------------------------------------------------------------
-
-## `fg`
+### `fg`
 
 **Definition:** Brings a job to the foreground.
 
 **Syntax:**
 
-``` bash
+```bash
 fg JOB_NUMBER
 ```
 
 **Example:**
 
-``` bash
+```bash
 fg %1
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 12. Task Scheduling
+---
 
-## `at`
+## 12. Task Scheduling
 
-**Definition:** Schedules a command or task to run once at a specified
-time.
+### `at`
+
+**Definition:** Schedules a command or task to run once at a specified time.
 
 **Syntax:**
 
-``` bash
+```bash
 at TIME
 ```
 
-**Options/actions mentioned:**
+**Related commands:**
 
-  Command / Option   Description
-  ------------------ -----------------------------------------------------
-  `at -l`            Lists scheduled jobs
-  `at rm NUMBER`     Deletes a scheduled job, as written in the document
+| Command | Description |
+|:--|:--|
+| `at -l`          | Lists scheduled jobs                                |
+| `atrm NUMBER` | Deletes a scheduled job |
 
 **Example:**
 
-``` bash
+```bash
 at 16:00
 ```
 
 Schedules a one-time task for 4:00 PM.
 
-------------------------------------------------------------------------
-
-## `cron`
+### `cron`
 
 **Definition:** Runs recurring tasks at scheduled times.
 
 **Usage:** Cron reads scheduled tasks from crontab files.
 
-------------------------------------------------------------------------
-
-## `crontab`
+### `crontab`
 
 **Definition:** Creates, lists, edits, or manages scheduled cron tasks.
 
 **Syntax:**
 
-``` bash
+```bash
 crontab -e
 crontab -l
 ```
 
-**Options mentioned:**
+**Options:**
 
-  Option   Description
-  -------- -----------------------
-  `-e`     Edits the crontab
-  `-l`     Lists scheduled tasks
+| Option | Description           |
+|:-------|:----------------------|
+| `-e`   | Edits the crontab     |
+| `-l`   | Lists scheduled tasks |
 
 **Crontab format:**
 
-``` text
+```text
 MIN HOUR DOM MON DOW CMD
 ```
 
 **Example:**
 
-``` text
+```text
 0 16 * * 1 /home/user/backup.sh
 ```
 
 Runs `backup.sh` at 4:00 PM every Monday.
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 13. Service Management
+---
 
-## `systemctl`
+## 13. Service Management
+
+### `systemctl`
 
 **Definition:** Manages services on Linux.
 
 **Syntax:**
 
-``` bash
+```bash
 systemctl SUBCOMMAND SERVICE_NAME
 ```
 
-**Subcommands mentioned:**
+**Subcommands:**
 
-  Subcommand   Description
-  ------------ -------------------------
-  `status`     Displays service status
-  `start`      Starts a service
-  `stop`       Stops a service
-  `restart`    Restarts a service
-  `enable`     Activates the service
-  `disable`    Disables the service
+| Subcommand | Description             |
+|:-----------|:------------------------|
+| `status`   | Displays service status |
+| `start`    | Starts a service        |
+| `stop`     | Stops a service         |
+| `restart`  | Restarts a service      |
+| `enable`   | Activates the service   |
+| `disable`  | Disables the service    |
 
 **Examples:**
 
-``` bash
+```bash
 sudo systemctl status httpd
 ```
 
-``` bash
+```bash
 sudo systemctl start httpd
 ```
 
-``` bash
+```bash
 sudo systemctl restart httpd
 ```
 
-``` bash
+```bash
 sudo systemctl enable httpd
 ```
 
-------------------------------------------------------------------------
+### `service`
 
-## `service`
+**Definition:** Manages services. `systemctl` provides more options and features.
 
-**Definition:** Manages services. The document notes that `systemctl`
-provides more options and features.
+**Syntax:**
 
-**General syntax:**
-
-``` bash
+```bash
 service SERVICE_NAME ACTION
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo service httpd restart
 ```
 
-------------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
 
-# 14. System Monitoring
+---
 
-## `lscpu`
+## 14. System Monitoring
+
+### `lscpu`
 
 **Definition:** Displays CPU information.
 
 **Syntax:**
 
-``` bash
+```bash
 lscpu
 ```
 
-------------------------------------------------------------------------
-
-## `lshw`
+### `lshw`
 
 **Definition:** Displays hardware information.
 
 **Syntax:**
 
-``` bash
+```bash
 lshw
 ```
 
-------------------------------------------------------------------------
+### `du`
 
-## `du`
-
-**Definition:** Displays the amount of disk space used by files and
-directories.
+**Definition:** Displays the amount of disk space used by files and directories.
 
 **Syntax:**
 
-``` bash
+```bash
 du [PATH]
 ```
 
 **Example:**
 
-``` bash
+```bash
 du /home/user
 ```
 
-------------------------------------------------------------------------
-
-## `df`
+### `df`
 
 **Definition:** Displays disk size and available/free space.
 
 **Syntax:**
 
-``` bash
+```bash
 df
 ```
 
 **Example:**
 
-``` bash
+```bash
 df
 ```
 
-------------------------------------------------------------------------
-
-## `fdisk`
+### `fdisk`
 
 **Definition:** Lists and modifies hard drive partitions.
 
 **Syntax:**
 
-``` bash
+```bash
 fdisk [DEVICE]
 ```
 
 **Example:**
 
-``` bash
+```bash
 sudo fdisk /dev/sda
 ```
 
-------------------------------------------------------------------------
-
-## `vmstat`
+### `vmstat`
 
 **Definition:** Displays information about virtual memory usage.
 
 **Syntax:**
 
-``` bash
+```bash
 vmstat
 ```
 
-------------------------------------------------------------------------
-
-## `free`
+### `free`
 
 **Definition:** Displays physical memory usage.
 
 **Syntax:**
 
-``` bash
+```bash
 free
 ```
 
-------------------------------------------------------------------------
+### `uptime`
 
-## `uptime`
-
-**Definition:** Displays how long the system has been running, the
-number of users, and CPU-related load information.
+**Definition:** Displays how long the system has been running, the number of users, and CPU-related load information.
 
 **Syntax:**
 
-``` bash
+```bash
 uptime
 ```
 
-------------------------------------------------------------------------
-
-# Quick Command Index
-
-  -----------------------------------------------------------------------
-  Category                            Commands
-  ----------------------------------- -----------------------------------
-  Basic                               `date`, `cal`, `clear`, `echo`,
-                                      `history`, `touch`, `cat`
-
-  Users & Groups                      `useradd`, `usermod`, `userdel`,
-                                      `passwd`, `groupadd`, `groupmod`,
-                                      `groupdel`, `gpasswd`
-
-  Privileges                          `su`, `sudo`, `visudo`
-
-  Editors                             `vim`, `vimtutor`, `nano`,
-                                      `apt-get`, `gedit`
-
-  Navigation                          `pwd`, `cd`, `ls`
-
-  File Operations                     `more`, `less`, `head`, `tail`,
-                                      `cp`, `rm`, `mkdir`, `mv`, `rmdir`
-
-  Search                              `hash`, `cksum`, `find`, `grep`,
-                                      `diff`
-
-  Links & Compression                 `ln`, `tar`, `gzip`, `zip`, `unzip`
-
-  Permissions                         `chown`, `chmod`
-
-  Bash & Text                         `env`, `alias`, `unalias`, `cut`,
-                                      `sed`, `sort`, `awk`
-
-  Processes                           `ps`, `pstree`, `top`, `kill`,
-                                      `nice`, `renice`, `jobs`, `bg`,
-                                      `fg`
-
-  Scheduling                          `at`, `cron`, `crontab`
-
-  Services                            `systemctl`, `service`
-
-  Monitoring                          `lscpu`, `lshw`, `du`, `df`,
-                                      `fdisk`, `vmstat`, `free`, `uptime`
-  -----------------------------------------------------------------------
+<p align="right"><a href="#table-of-contents">⬆ Back to top</a></p>
