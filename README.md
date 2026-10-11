@@ -7,6 +7,7 @@ A collection of my personal notes on everything I learn. Each topic has its own 
 | Topic | Description | Status |
 |:--|:--|:-:|
 | 🐧 [Linux](./linux/) | Command cheat sheet for shell basics, users, permissions, processes, and system monitoring | ✅ |
+| 🎓 [Certifications](./certifications/) | Study notes, key concepts, and exam prep for professional certifications | 🚧 |
 | 🧭 Best Practices | General best practices for coding, project setup, and documentation | 📝 |
 | 🗃️ SQL | Queries, joins, aggregations, and database fundamentals | 📝 |
 | 🐍 Python | Python fundamentals, data structures, and useful libraries | 📝 |
@@ -25,5 +26,6 @@ my-learning-notes/
 ├── sql/
 ├── python/
 ├── data_engineering/
-└── machine_learning/
+├── machine_learning/
+└── certifications/
 ```
