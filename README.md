@@ -1,4 +1,4 @@
-# 📚 My Learning Notes
+# My Learning Notes
 
 A collection of my personal notes on everything I learn. Each topic has its own folder, and each folder has a README with the notes for that topic.
 
