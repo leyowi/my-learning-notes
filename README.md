@@ -6,13 +6,13 @@ A collection of my personal notes on everything I learn. Each topic has its own 
 
 | Topic | Description | Status |
 |:--|:--|:-:|
-| 🐧 [Linux](./linux/) | Command cheat sheet for shell basics, users, permissions, processes, and system monitoring | ✅ |
-| 🎓 [Certifications](./certifications/) | Study notes, key concepts, and exam prep for professional certifications | 🚧 |
-| 🧭 Best Practices | General best practices for coding, project setup, and documentation | 📝 |
-| 🗃️ SQL | Queries, joins, aggregations, and database fundamentals | 📝 |
-| 🐍 Python | Python fundamentals, data structures, and useful libraries | 📝 |
-| 🏗️ Data Engineering | Data pipelines, ETL, data warehousing, and related tools | 📝 |
-| 🤖 Machine Learning | Core concepts, algorithms, model training, and evaluation | 📝 |
+| [Linux](./linux/) | Command cheat sheet for shell basics, users, permissions, processes, and system monitoring | ✅ |
+| SQL | Queries, joins, aggregations, and database fundamentals | 📝 |
+| Python | Python fundamentals, data structures, and useful libraries | 📝 |
+| Data Engineering | Data pipelines, ETL, data warehousing, and related tools | 📝 |
+| Machine Learning | Core concepts, algorithms, model training, and evaluation | 📝 |
+| Best Practices | General best practices for coding, project setup, and documentation | 📝 |
+| [Certifications](./certifications/) | Study notes, key concepts, and exam prep for professional certifications | 🚧 |
 
 **Status:** ✅ Done &nbsp; 🚧 In progress &nbsp; 📝 Planned
 
@@ -22,10 +22,10 @@ A collection of my personal notes on everything I learn. Each topic has its own 
 my-learning-notes/
 ├── README.md
 ├── linux/
-├── best_practices/
 ├── sql/
 ├── python/
 ├── data_engineering/
 ├── machine_learning/
+├── best_practices/
 └── certifications/
 ```
